@@ -15,9 +15,9 @@
 - [🏁 Getting Started](#-getting-started)
 - [⭐ Features](#-features)
 - [🔌 Supported Extensions](#-supported-extensions)
-- [🌍 Supported Languages](#-supported-languages)
+- [🌍 Supported Language](#-supported-language)
 - [💿 Installation](#-installation)
-- [🖥️ Usage](#-usage)
+- [🖥️ Usage if Built from Source](#️-usage-if-built-from-source)
 - [📜 License](#-license)
 
 ## 📖 About
