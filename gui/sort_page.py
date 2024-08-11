@@ -1,4 +1,3 @@
-from msilib.schema import CheckBox
 from PyQt5.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -21,6 +20,13 @@ from src.config import (
     load_config,
 )
 from .icon_checkbox_widget import IconCheckBoxWidget  # Import the custom widget
+import sys
+import os
+
+def resource_path(relative_path):
+    """Get the absolute path to the resource, works for dev and for PyInstaller"""
+    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 directories_name = {
     "Music": "Music",
@@ -29,7 +35,6 @@ directories_name = {
     "Documents": "Documents",
     "Downloads": "Downloads",
 }
-
 
 class SortPage(QWidget):
     def __init__(self, status_bar, result_label):
@@ -65,7 +70,7 @@ class SortPage(QWidget):
             QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
         )
 
-        self.sort_button = QPushButton(QIcon("asset/sort.png"), "Sort Selected Files")
+        self.sort_button = QPushButton(QIcon(resource_path("asset/sort.png")), "Sort Selected Files")
         self.sort_button.clicked.connect(self.sort_selected_folders)
         layout.addWidget(self.sort_button)
 
@@ -74,27 +79,27 @@ class SortPage(QWidget):
     def add_sort_checkboxes(self, layout):
         # Create custom icon checkboxes
         self.music_checkbox = IconCheckBoxWidget(
-            "asset/custom_logo_chechbox/music.png", "Sort Music Files"
+            resource_path("asset/custom_logo_chechbox/music.png"), "Sort Music Files"
         )
         layout.addWidget(self.music_checkbox)
 
         self.video_checkbox = IconCheckBoxWidget(
-            "asset/custom_logo_chechbox/videos.png", "Sort Video Files"
+            resource_path("asset/custom_logo_chechbox/videos.png"), "Sort Video Files"
         )
         layout.addWidget(self.video_checkbox)
 
         self.image_checkbox = IconCheckBoxWidget(
-            "asset/custom_logo_chechbox/images.png", "Sort Image Files"
+            resource_path("asset/custom_logo_chechbox/images.png"), "Sort Image Files"
         )
         layout.addWidget(self.image_checkbox)
 
         self.document_checkbox = IconCheckBoxWidget(
-            "asset/custom_logo_chechbox/doc.png", "Sort Document Files"
+            resource_path("asset/custom_logo_chechbox/doc.png"), "Sort Document Files"
         )
         layout.addWidget(self.document_checkbox)
 
         self.download_checkbox = IconCheckBoxWidget(
-            "asset/custom_logo_chechbox/download.png", "Sort Download Files"
+            resource_path("asset/custom_logo_chechbox/download.png"), "Sort Download Files"
         )
         layout.addWidget(self.download_checkbox)
 

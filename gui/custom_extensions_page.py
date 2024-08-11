@@ -11,6 +11,14 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtGui import QIcon
 from src.config import load_config, save_config
+import sys
+import os
+
+
+def resource_path(relative_path):
+    """Get the absolute path to the resource, works for dev and for PyInstaller"""
+    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 
 class CustomExtensionsPage(QWidget):
@@ -35,7 +43,7 @@ class CustomExtensionsPage(QWidget):
 
         # Add Extension Button with Icon
         add_extension_button = QPushButton(
-            QIcon("asset/custom_extension.png"), "Add Custom Extension"
+            QIcon(resource_path("asset/custom_extension.png")), "Add Custom Extension"
         )
         add_extension_button.clicked.connect(self.add_custom_extension)
         layout.addWidget(add_extension_button)
@@ -51,7 +59,7 @@ class CustomExtensionsPage(QWidget):
 
         # Remove Extension Button with Icon
         remove_extension_button = QPushButton(
-            QIcon("asset/cross.png"), "Remove Selected Extension"
+            QIcon(resource_path("asset/cross.png")), "Remove Selected Extension"
         )
         remove_extension_button.clicked.connect(self.remove_selected_extension)
         layout.addWidget(remove_extension_button)

@@ -16,6 +16,14 @@ from .sort_page import SortPage
 from .undo_page import UndoPage
 from .custom_folders_page import CustomFoldersPage
 from .custom_extensions_page import CustomExtensionsPage
+import sys
+import os
+
+
+def resource_path(relative_path):
+    """Get the absolute path to the resource, works for dev and for PyInstaller"""
+    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 
 class MainWindow(QMainWindow):
@@ -48,13 +56,21 @@ class MainWindow(QMainWindow):
 
         # Sidebar navigation with icons
         self.sidebar = QListWidget()
-        self.sidebar.addItem(QListWidgetItem(QIcon("asset/sort.png"), "Sort Options"))
-        self.sidebar.addItem(QListWidgetItem(QIcon("asset/undo.png"), "Undo Changes"))
         self.sidebar.addItem(
-            QListWidgetItem(QIcon("asset/custom_folder.png"), "Custom Folders")
+            QListWidgetItem(QIcon(resource_path("gui/asset/sort.png")), "Sort Options")
         )
         self.sidebar.addItem(
-            QListWidgetItem(QIcon("asset/custom_extension.png"), "Custom Extensions")
+            QListWidgetItem(QIcon(resource_path("gui/asset/undo.png")), "Undo Changes")
+        )
+        self.sidebar.addItem(
+            QListWidgetItem(
+                QIcon(resource_path("gui/asset/custom_folder.png")), "Custom Folders"
+            )
+        )
+        self.sidebar.addItem(
+            QListWidgetItem(
+                QIcon(resource_path("gui/asset/custom_extension.png")), "Custom Extensions"
+            )
         )
         self.sidebar.currentItemChanged.connect(self.display_page)
         sidebar_layout.addWidget(self.sidebar)

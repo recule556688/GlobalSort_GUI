@@ -11,6 +11,14 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtGui import QIcon
 from src.config import load_config, save_config
+import sys
+import os
+
+
+def resource_path(relative_path):
+    """Get the absolute path to the resource, works for dev and for PyInstaller"""
+    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 
 class CustomFoldersPage(QWidget):
@@ -27,7 +35,7 @@ class CustomFoldersPage(QWidget):
 
         # Add Folder Button with Icon
         add_folder_button = QPushButton(
-            QIcon("asset/custom_folder.png"), "Add Custom Folder"
+            QIcon(resource_path("asset/custom_folder.png")), "Add Custom Folder"
         )
         add_folder_button.clicked.connect(self.add_custom_folder)
         layout.addWidget(add_folder_button)
@@ -43,7 +51,7 @@ class CustomFoldersPage(QWidget):
 
         # Remove Folder Button with Icon
         remove_folder_button = QPushButton(
-            QIcon("asset/cross.png"), "Remove Selected Folder"
+            QIcon(resource_path("asset/cross.png")), "Remove Selected Folder"
         )
         remove_folder_button.clicked.connect(self.remove_selected_folder)
         layout.addWidget(remove_folder_button)
