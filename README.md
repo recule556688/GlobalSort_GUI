@@ -1,9 +1,9 @@
 # 🌍 GlobalSort GUI
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)](placeholder)
-[![GitHub Issues](https://img.shields.io/github/issues/recule556688/Projet_Perso)](https://github.com/recule556688/GlobalSort_GUI/issues)
-[![License: MIT](https://img.shields.io/badge/License-MIT-56BEB8.svg)](https://github.com/recule556688/Projet_Perso/blob/main/LICENSE)
-![Repository size](https://img.shields.io/github/repo-size/recule556688/projet_perso?color=56BEB8)
+[![GitHub Issues](https://img.shields.io/github/issues/recule556688/GlobalSort_GUI)](https://github.com/recule556688/GlobalSort_GUI/issues)
+[![License: MIT](https://img.shields.io/badge/License-MIT-56BEB8.svg)](https://github.com/recule556688/GlobalSort_GUI/blob/main/LICENSE)
+![Repository size](https://img.shields.io/github/repo-size/recule556688/GlobalSort_GUI?color=56BEB8)
 
 ---
 
@@ -17,12 +17,12 @@
 - [🔌 Supported Extensions](#-supported-extensions)
 - [🌍 Supported Languages](#-supported-languages)
 - [💿 Installation](#-installation)
-- [🖥️ Usage](#usage)
+- [🖥️ Usage](#-usage)
 - [📜 License](#-license)
 
 ## 📖 About
 
-- "GlobalSort is my first project developed in Python. I decided to create this powerful file organization tool as a means to learn Python and simultaneously find a solution to organize my files efficiently."
+"GlobalSort is my first project developed in Python. I decided to create this powerful file organization tool as a means to learn Python and simultaneously find a solution to organize my files efficiently."
 
 ### 🚀 CLI Version
 
@@ -48,7 +48,7 @@ If you're interested in the command-line interface (CLI) version of this project
 
 ## 🚀 Getting Started
 
-- These instructions will guide you through the process of setting up and running the GlobalSort GUI project on your local machine.
+These instructions will guide you through the process of setting up and running the GlobalSort GUI project on your local machine.
 
 ## 🔌 Supported Extensions
 
@@ -100,7 +100,7 @@ If you're interested in the command-line interface (CLI) version of this project
 
 ### Installation Steps (Windows, MacOS, Linux)
 
-### Method 1: Building from Source
+#### Method 1: Building from Source
 
 1. Clone the repository to your local machine:
 
@@ -144,7 +144,7 @@ If you're interested in the command-line interface (CLI) version of this project
     python main.py
     ```
 
-### Method 2: Using the Executable
+#### Method 2: Using the Executable
 
 Go to the release page and download the latest release for your operating system.
 
@@ -174,7 +174,7 @@ Go to the release page and download the latest release for your operating system
 
 ## 🖥️ Usage if Using the Executable
 
-1. Run the executable
+1. Run the executable.
 
 2. Sorting Files:
 
@@ -198,4 +198,4 @@ This project is licensed under the MIT License. For more details, see the [LICEN
 
 Made with ❤️ by [Karma](https://github.com/recule556688)
 
-[Back to top](#top)
+[Back to top](#-top)
