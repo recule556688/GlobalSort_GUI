@@ -16,6 +16,7 @@ from .sort_page import SortPage
 from .undo_page import UndoPage
 from .custom_folders_page import CustomFoldersPage
 from .custom_extensions_page import CustomExtensionsPage
+from .update_page import UpdatePage
 import sys
 import os
 
@@ -69,7 +70,8 @@ class MainWindow(QMainWindow):
         )
         self.sidebar.addItem(
             QListWidgetItem(
-                QIcon(resource_path("gui/asset/custom_extension.png")), "Custom Extensions"
+                QIcon(resource_path("gui/asset/custom_extension.png")),
+                "Custom Extensions",
             )
         )
         self.sidebar.currentItemChanged.connect(self.display_page)

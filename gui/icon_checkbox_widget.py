@@ -28,6 +28,7 @@ class IconCheckBoxWidget(QWidget):
             16, 16, Qt.KeepAspectRatio, Qt.SmoothTransformation
         )
 
+
         icon_label.setPixmap(icon_pixmap)
         layout.addWidget(icon_label)
 

@@ -9,15 +9,20 @@ from gui.main_window import MainWindow
 
 def resource_path(relative_path):
     """Get the absolute path to the resource, works for dev and for PyInstaller"""
-    base_path = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath("gui")  # Use the current directory
+
+    return os.path.join(base_path, relative_path.replace("\\", "/"))
 
 
 if __name__ == "__main__":
     app = QApplication([])
 
     # Apply a modern font
-    app.setFont(QFont("Segoe UI", 10))
+    app.setFont(QFont("Segoe UI", 12))
 
     # Set the application icon
     app.setWindowIcon(
@@ -51,7 +56,9 @@ if __name__ == "__main__":
     time.sleep(1)
 
     window = MainWindow()
-    window.setWindowIcon(QIcon(resource_path("gui/asset/Tess.png")))  # Set the window icon
+    window.setWindowIcon(
+        QIcon(resource_path("asset/Tess.png"))
+    )  # Set the window icon
 
     # Apply a custom stylesheet
     app.setStyleSheet(
@@ -94,7 +101,19 @@ if __name__ == "__main__":
             background-color: #3c3f41;
             color: #ffffff;
         }
-    """
+        QMessageBox {
+            background-color: #2b2b2b;
+            color: #ffffff;
+        }
+        QMessageBox QLabel {
+            color: #ffffff;
+        }
+        QMessageBox QPushButton {
+            background-color: #3c3f41;
+            color: #ffffff;
+            border: 1px solid #555;
+        }
+        """
     )
 
     window.show()
