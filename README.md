@@ -198,4 +198,5 @@ This project is licensed under the MIT License. For more details, see the [LICEN
 
 Made with ❤️ by [Karma](https://github.com/recule556688)
 
-[Back to top](#-top)
+[⬆️ Back to Top](#-globalsort-gui)
+```
