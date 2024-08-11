@@ -17,7 +17,7 @@
 - [🔌 Supported Extensions](#-supported-extensions)
 - [🌍 Supported Language](#-supported-language)
 - [💿 Installation](#-installation)
-- [🖥️ Usage if Built from Source](#️-usage-if-built-from-source)
+- [🖥️ Usage](#️-usage-if-built-from-source)
 - [📜 License](#-license)
 
 ## 📖 About
