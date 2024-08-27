@@ -58,19 +58,19 @@ class MainWindow(QMainWindow):
         # Sidebar navigation with icons
         self.sidebar = QListWidget()
         self.sidebar.addItem(
-            QListWidgetItem(QIcon(resource_path("gui/asset/sort.png")), "Sort Options")
+            QListWidgetItem(QIcon(resource_path("asset/sort.png")), "Sort Options")
         )
         self.sidebar.addItem(
-            QListWidgetItem(QIcon(resource_path("gui/asset/undo.png")), "Undo Changes")
+            QListWidgetItem(QIcon(resource_path("asset/undomenu.png")), "Undo Changes")
         )
         self.sidebar.addItem(
             QListWidgetItem(
-                QIcon(resource_path("gui/asset/custom_folder.png")), "Custom Folders"
+                QIcon(resource_path("asset/custom_folder.png")), "Custom Folders"
             )
         )
         self.sidebar.addItem(
             QListWidgetItem(
-                QIcon(resource_path("gui/asset/custom_extension.png")),
+                QIcon(resource_path("asset/custom_extension.png")),
                 "Custom Extensions",
             )
         )
