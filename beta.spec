@@ -23,7 +23,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='GlobalSort GUI',
+    name='Beta_GlobalSort GUI',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
