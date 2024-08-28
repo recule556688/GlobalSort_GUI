@@ -56,9 +56,7 @@ if __name__ == "__main__":
     time.sleep(1)
 
     window = MainWindow()
-    window.setWindowIcon(
-        QIcon(resource_path("asset/Tess.png"))
-    )  # Set the window icon
+    window.setWindowIcon(QIcon(resource_path("asset/Tess.png")))  # Set the window icon
 
     # Apply a custom stylesheet
     app.setStyleSheet(
