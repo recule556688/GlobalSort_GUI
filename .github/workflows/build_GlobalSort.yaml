@@ -76,13 +76,13 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: windows-build-artifacts
-        path: ./windows-dist
+        path: ./artifacts/windows
 
     - name: Download Linux build artifacts
       uses: actions/download-artifact@v2
       with:
         name: linux-build-artifacts
-        path: ./linux-dist
+        path: ./artifacts/linux
 
     - name: Create Release
       id: create_release
@@ -103,7 +103,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./windows-dist/Beta_GlobalSort_GUI.exe
+        asset_path: ./artifacts/windows/Beta_GlobalSort_GUI.exe
         asset_name: Beta_GlobalSort_GUI_Windows_${{ github.run_number }}.exe
         asset_content_type: application/octet-stream
 
@@ -113,6 +113,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./linux-dist/Beta_GlobalSort_GUI
+        asset_path: ./artifacts/linux/Beta_GlobalSort_GUI
         asset_name: Beta_GlobalSort_GUI_Linux_${{ github.run_number }}
         asset_content_type: application/octet-stream
