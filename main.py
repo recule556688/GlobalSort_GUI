@@ -50,6 +50,7 @@ if __name__ == "__main__":
             spinner_width,
         )
     )
+
     spinner_label.setAlignment(Qt.AlignCenter)
     spinner_movie.start()
 
