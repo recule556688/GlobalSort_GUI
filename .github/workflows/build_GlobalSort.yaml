@@ -94,7 +94,7 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
       with:
         tag_name: GlobalSort_${{ github.run_number }}
         release_name: GlobalSort_Release.${{ github.run_number }}
@@ -106,7 +106,7 @@ jobs:
     - name: Upload Windows Release Asset
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./artifacts/windows/Beta_GlobalSort_GUI.exe
@@ -116,7 +116,7 @@ jobs:
     - name: Upload Linux Release Asset
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./artifacts/linux/Beta_GlobalSort_GUI
