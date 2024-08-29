@@ -53,7 +53,6 @@ if __name__ == "__main__":
     spinner_label.setAlignment(Qt.AlignCenter)
     spinner_movie.start()
 
-
     # Simulate loading time
     time.sleep(1)
 
