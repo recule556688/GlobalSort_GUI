@@ -1,4 +1,4 @@
-name: Build GlobalSort GUI for Windows, Linux, and macOS
+name: Build Beta GlobalSort GUI for Windows, Linux, and macOS
 
 on:
   push:

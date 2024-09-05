@@ -1,16 +1,6 @@
 name: Build GlobalSort GUI for Windows, Linux, and macOS
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'main.py'
-      - 'gui/**'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - 'main.py'
-      - 'gui/**'
   workflow_dispatch:  # This allows manual trigger from GitHub Actions UI
 
 jobs:
