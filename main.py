@@ -25,9 +25,7 @@ def get_icon_path():
     elif sys.platform == "win32":
         return resource_path("asset/folder.ico")  # Windows uses .ico
     elif sys.platform == "darwin":
-        return resource_path(
-            "asset/folder.png"
-        )  # macOS uses .png for icons
+        return resource_path("asset/folder.png")  # macOS uses .png for icons
 
 
 if __name__ == "__main__":
