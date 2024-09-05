@@ -9,6 +9,10 @@
 
 ## 🗂️ GlobalSort is a Python-based utility tool designed to organize files in your computer's directories
 
+## 🎥 App Preview
+
+![App Preview](https://tessdev.fr/_next/image?url=%2FGlobalSort2x.gif%3Fheight%3D300%26width%3D400&w=1080&q=75)
+
 ## 📚 Table of Contents
 
 - [📘 About](#-about)
