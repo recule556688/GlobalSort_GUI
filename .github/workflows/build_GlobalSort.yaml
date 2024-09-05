@@ -75,14 +75,24 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Build GlobalSort Application for macOS
+    - name: Build GlobalSort Application for macOS ARM
       run: |
-        pyinstaller main_macos_linux.spec
+        arch -arm64 pyinstaller main_macos_linux.spec  # Build for ARM
 
-    - name: Archive build artifacts
+    - name: Archive ARM build artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: macos-build-artifacts
+        name: macos-arm-build-artifacts
+        path: ./dist/*
+
+    - name: Build GlobalSort Application for macOS Intel
+      run: |
+        arch -x86_64 pyinstaller main_macos_linux.spec  # Build for Intel
+
+    - name: Archive Intel build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: macos-intel-build-artifacts
         path: ./dist/*
 
   create_release:
@@ -102,11 +112,17 @@ jobs:
         name: linux-build-artifacts
         path: ./artifacts/linux
 
-    - name: Download macOS build artifacts
+    - name: Download macOS ARM build artifacts
       uses: actions/download-artifact@v2
       with:
-        name: macos-build-artifacts
-        path: ./artifacts/macos
+        name: macos-arm-build-artifacts
+        path: ./artifacts/macos/arm
+
+    - name: Download macOS Intel build artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: macos-intel-build-artifacts
+        path: ./artifacts/macos/intel
 
     - name: List Windows Artifact Directory
       run: ls -R ./artifacts/windows
@@ -114,8 +130,11 @@ jobs:
     - name: List Linux Artifact Directory
       run: ls -R ./artifacts/linux
 
-    - name: List macOS Artifact Directory
-      run: ls -R ./artifacts/macos
+    - name: List macOS ARM Artifact Directory
+      run: ls -R ./artifacts/macos/arm
+
+    - name: List macOS Intel Artifact Directory
+      run: ls -R ./artifacts/macos/intel
 
     - name: Rename Windows Artifact
       run: |
@@ -125,9 +144,13 @@ jobs:
       run: |
         mv "./artifacts/linux/GlobalSort GUI" "./artifacts/linux/GlobalSort_GUI_Linux_${{ github.run_number }}"
 
-    - name: Rename macOS Artifact
+    - name: Rename macOS ARM Artifact
       run: |
-        mv "./artifacts/macos/GlobalSort GUI" "./artifacts/macos/GlobalSort_GUI_macOS_${{ github.run_number }}"
+        mv "./artifacts/macos/arm/GlobalSort GUI" "./artifacts/macos/GlobalSort_GUI_macOS_ARM_${{ github.run_number }}"
+
+    - name: Rename macOS Intel Artifact
+      run: |
+        mv "./artifacts/macos/intel/GlobalSort GUI" "./artifacts/macos/GlobalSort_GUI_macOS_Intel_${{ github.run_number }}"
 
     - name: Create Release
       id: create_release
@@ -159,15 +182,25 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: "./artifacts/linux/GlobalSort_GUI_Linux_${{ github.run_number }}"
-        asset_name: GlobalSort_GUI_Linux_${{ github.run_number }}
+        asset_name: GlobalSort_GUI_Linux_${{ github.run_number }}"
         asset_content_type: application/octet-stream
 
-    - name: Upload macOS Release Asset
+    - name: Upload macOS ARM Release Asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: "./artifacts/macos/GlobalSort_GUI_macOS_${{ github.run_number }}"
-        asset_name: GlobalSort_GUI_macOS_${{ github.run_number }}
+        asset_path: "./artifacts/macos/GlobalSort_GUI_macOS_ARM_${{ github.run_number }}"
+        asset_name: GlobalSort_GUI_macOS_ARM_${{ github.run_number }}"
+        asset_content_type: application/octet-stream
+
+    - name: Upload macOS Intel Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: "./artifacts/macos/GlobalSort_GUI_macOS_Intel_${{ github.run_number }}"
+        asset_name: GlobalSort_GUI_macOS_Intel_${{ github.run_number }}"
         asset_content_type: application/octet-stream
