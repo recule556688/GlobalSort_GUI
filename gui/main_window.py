@@ -31,7 +31,6 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Global Sort")
         self.setGeometry(100, 100, 800, 600)
 
         # Initialize the status bar and result label first

@@ -31,7 +31,7 @@ if __name__ == "__main__":
     )  # Path to your .ico or .png file
 
     # Set the application icon
-    app.setWindowIcon(QIcon(resource_path("assets/folder.png")))
+    app.setWindowIcon(QIcon(resource_path("asset/folder.ico")))
 
     # Splash screen with logo
     splash = QSplashScreen(QPixmap(resource_path("asset/Tess.png")))
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     time.sleep(1)
 
     window = MainWindow()
-    window.setWindowIcon(QIcon(resource_path("asset/Tess.png")))  # Set the window icon
+    window.setWindowTitle("GlobalSort GUI")
 
     # Apply a custom stylesheet
     app.setStyleSheet(
