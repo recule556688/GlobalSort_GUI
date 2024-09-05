@@ -18,6 +18,17 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path.replace("\\", "/"))
 
 
+def get_icon_path():
+    """Return the appropriate icon based on the OS"""
+    if sys.platform.startswith("linux"):
+        return resource_path("asset/folder.png")  # Linux uses .png
+    elif sys.platform == "win32":
+        return resource_path("asset/folder.ico")  # Windows uses .ico
+    elif sys.platform == "darwin":
+        return resource_path(
+            "asset/folder.png"
+        )  # macOS uses .png for icons
+
 
 if __name__ == "__main__":
     app = QApplication([])
@@ -25,16 +36,11 @@ if __name__ == "__main__":
     # Apply a modern font
     app.setFont(QFont("Segoe UI", 12))
 
-    # Set the application icon
-    app.setWindowIcon(
-        QIcon(resource_path("asset/Tess.png"))
-    )  # Path to your .ico or .png file
-
-    # Set the application icon
-    app.setWindowIcon(QIcon(resource_path("asset/folder.ico")))
+    # Set the application icon based on the operating system
+    app.setWindowIcon(QIcon(get_icon_path()))
 
     # Splash screen with logo
-    splash = QSplashScreen(QPixmap(resource_path("asset/Tess.png")))
+    splash = QSplashScreen(QPixmap(get_icon_path()))
     splash.show()
 
     # Add loading spinner below the logo
