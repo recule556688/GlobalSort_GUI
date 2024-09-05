@@ -74,15 +74,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.12.4'
-
-    - name: Install dependencies
+    - name: Install dependencies for ARM
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        arch -arm64 /usr/local/bin/python3 -m pip install --upgrade pip
+        arch -arm64 /usr/local/bin/python3 -m pip install -r requirements.txt
 
     - name: Build GlobalSort Application for macOS ARM
       run: |
@@ -94,6 +89,11 @@ jobs:
         name: macos-arm-build-artifacts
         path: ./dist/*
 
+    - name: Install dependencies for Intel
+      run: |
+        arch -x86_64 /usr/local/bin/python3 -m pip install --upgrade pip
+        arch -x86_64 /usr/local/bin/python3 -m pip install -r requirements.txt
+
     - name: Build GlobalSort Application for macOS Intel
       run: |
         arch -x86_64 pyinstaller beta_macos_linux.spec  # Build for Intel architecture
@@ -103,6 +103,7 @@ jobs:
       with:
         name: macos-intel-build-artifacts
         path: ./dist/*
+
 
   create_release:
     runs-on: ubuntu-latest
