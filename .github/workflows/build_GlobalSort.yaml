@@ -11,6 +11,7 @@ on:
     paths:
       - 'main.py'
       - 'gui/**'
+  workflow_dispatch:  # This allows manual trigger from GitHub Actions UI
 
 jobs:
   build_windows:
@@ -32,7 +33,7 @@ jobs:
 
     - name: Build GlobalSort Application for Windows
       run: |
-        pyinstaller beta.spec
+        pyinstaller main.spec
 
     - name: Archive build artifacts
       uses: actions/upload-artifact@v2
@@ -59,7 +60,7 @@ jobs:
 
     - name: Build GlobalSort Application for Linux
       run: |
-        pyinstaller beta_macos_linux.spec
+        pyinstaller main_macos_linux.spec
 
     - name: Archive build artifacts
       uses: actions/upload-artifact@v2
@@ -86,7 +87,7 @@ jobs:
 
     - name: Build GlobalSort Application for macOS
       run: |
-        pyinstaller beta_macos_linux.spec
+        pyinstaller main_macos_linux.spec
 
     - name: Archive build artifacts
       uses: actions/upload-artifact@v2
@@ -128,15 +129,15 @@ jobs:
 
     - name: Rename Windows Artifact
       run: |
-        mv "./artifacts/windows/Beta_GlobalSort GUI.exe" "./artifacts/windows/Beta_GlobalSort_GUI_Windows_${{ github.run_number }}.exe"
+        mv "./artifacts/windows/GlobalSort GUI.exe" "./artifacts/windows/GlobalSort_GUI_Windows_${{ github.run_number }}.exe"
 
     - name: Rename Linux Artifact
       run: |
-        mv "./artifacts/linux/Beta_GlobalSort GUI" "./artifacts/linux/Beta_GlobalSort_GUI_Linux_${{ github.run_number }}"
+        mv "./artifacts/linux/GlobalSort GUI" "./artifacts/linux/GlobalSort_GUI_Linux_${{ github.run_number }}"
 
     - name: Rename macOS Artifact
       run: |
-        mv "./artifacts/macos/Beta_GlobalSort GUI" "./artifacts/macos/Beta_GlobalSort_GUI_macOS_${{ github.run_number }}"
+        mv "./artifacts/macos/GlobalSort GUI" "./artifacts/macos/GlobalSort_GUI_macOS_${{ github.run_number }}"
 
     - name: Create Release
       id: create_release
@@ -147,8 +148,8 @@ jobs:
         tag_name: GlobalSort_${{ github.run_number }}
         release_name: GlobalSort_Release.${{ github.run_number }}
         body: |
-          New beta release of GlobalSort GUI automatically built by GitHub Actions for Windows, Linux, and macOS.
-        draft: false
+          New release of GlobalSort GUI automatically built by GitHub Actions for Windows, Linux, and macOS.
+        draft: true
         prerelease: true
 
     - name: Upload Windows Release Asset
@@ -157,8 +158,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: "./artifacts/windows/Beta_GlobalSort_GUI_Windows_${{ github.run_number }}.exe"
-        asset_name: Beta_GlobalSort_GUI_Windows_${{ github.run_number }}.exe
+        asset_path: "./artifacts/windows/GlobalSort_GUI_Windows_${{ github.run_number }}.exe"
+        asset_name: GlobalSort_GUI_Windows_${{ github.run_number }}.exe
         asset_content_type: application/octet-stream
 
     - name: Upload Linux Release Asset
@@ -167,8 +168,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: "./artifacts/linux/Beta_GlobalSort_GUI_Linux_${{ github.run_number }}"
-        asset_name: Beta_GlobalSort_GUI_Linux_${{ github.run_number }}
+        asset_path: "./artifacts/linux/GlobalSort_GUI_Linux_${{ github.run_number }}"
+        asset_name: GlobalSort_GUI_Linux_${{ github.run_number }}
         asset_content_type: application/octet-stream
 
     - name: Upload macOS Release Asset
@@ -177,6 +178,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: "./artifacts/macos/Beta_GlobalSort_GUI_macOS_${{ github.run_number }}"
-        asset_name: Beta_GlobalSort_GUI_macOS_${{ github.run_number }}
+        asset_path: "./artifacts/macos/GlobalSort_GUI_macOS_${{ github.run_number }}"
+        asset_name: GlobalSort_GUI_macOS_${{ github.run_number }}
         asset_content_type: application/octet-stream
