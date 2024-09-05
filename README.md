@@ -11,7 +11,7 @@
 
 ## 🎥 App Preview
 
-![App Preview](https://tessdev.fr/_next/image?url=%2FGlobalSort2x.gif%3Fheight%3D300%26width%3D400&w=1080&q=75)
+![App Preview](/assets/GlobalSort2x.gif)
 
 ## 📚 Table of Contents
 
