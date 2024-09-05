@@ -30,6 +30,9 @@ if __name__ == "__main__":
         QIcon(resource_path("asset/Tess.png"))
     )  # Path to your .ico or .png file
 
+    # Set the application icon
+    app.setWindowIcon(QIcon(resource_path("assets/folder.png")))
+
     # Splash screen with logo
     splash = QSplashScreen(QPixmap(resource_path("asset/Tess.png")))
     splash.show()
